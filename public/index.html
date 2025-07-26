@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AS Service & Appliances - Expert Home Service & Electronics</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header-top {
+            background: rgba(0,0,0,0.1);
+            padding: 8px 0;
+            font-size: 14px;
+        }
+
+        .header-top .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav {
+            padding: 15px 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-menu a:hover {
+            color: #ffd700;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%23667eea;stop-opacity:1" /><stop offset="100%" style="stop-color:%23764ba2;stop-opacity:1" /></linearGradient></defs><rect width="1200" height="600" fill="url(%23grad1)"/><circle cx="200" cy="150" r="80" fill="rgba(255,255,255,0.1)"/><circle cx="800" cy="400" r="120" fill="rgba(255,255,255,0.05)"/><circle cx="1000" cy="200" r="60" fill="rgba(255,255,255,0.1)"/></svg>');
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            transition: left 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            left: 0;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 100px 0;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .product-image {
+            height: 200px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .product-info {
+            padding: 25px;
+        }
+
+        .product-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .product-info p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .feature-item i {
+            font-size: 1.5rem;
+            color: #ffd700;
+        }
+
+        /* Booking Form */
+        .booking {
+            padding: 100px 0;
+            background: #f8f9fa;
+        }
+
+        .booking-form {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e1e8ed;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .contact-item {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .contact-item i {
+            font-size: 2.5rem;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+
+        .contact-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .contact-item p {
+            color: #666;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            color: #ffd700;
+        }
+
+        .footer-section p,
+        .footer-section li {
+            color: #ccc;
+            line-height: 1.8;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-section ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: #ffd700;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #555;
+            padding-top: 20px;
+            text-align: center;
+            color: #aaa;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 40px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+            animation: slideDown 0.3s ease;
+        }
+
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #aaa;
+        }
+
+        .close:hover {
+            color: #333;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(102, 126, 234, 0.95);
+                flex-direction: column;
+                padding: 20px;
+                backdrop-filter: blur(10px);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .booking-form {
+                padding: 30px 20px;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+
+            .header-top {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <div class="contact-info">
+                    <span><i class="fas fa-phone"></i> +91-9876543210</span>
+                    <span><i class="fas fa-envelope"></i> info@asservice.com</span>
+                </div>
+                <div>
+                    <span><i class="fas fa-clock"></i> 24/7 Emergency Service</span>
+                </div>
+            </div>
+        </div>
+        <nav>
+            <div class="container">
+                <div class="nav-container">
+                    <a href="#" class="logo">AS Service & Appliances</a>
+                    <ul class="nav-menu">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#" onclick="openModal('bookingModal')">Book Service</a></li>
+                    </ul>
+                    <button class="menu-toggle" onclick="toggleMenu()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Expert Home Appliance Services</h1>
+                    <p>Professional repair, installation & sales of home appliances in Purnia, Bihar. Your trusted partner for all electrical needs.</p>
+                    <div class="cta-buttons">
+                        <a href="#" class="btn btn-primary" onclick="openModal('bookingModal')">Book Service Now</a>
+                        <a href="#products" class="btn btn-secondary">Shop Appliances</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="services">
+            <div class="container">
+                <div class="section-title fade-in">
+                    <h2>Our Expert Services</h2>
+                    <p>Comprehensive home appliance solutions with skilled technicians and genuine parts</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-snowflake"></i>
+                        </div>
+                        <h3>AC & Cooler Service</h3>
+                        <p>Expert installation, repair, and maintenance of air conditioners and coolers. Gas refilling, cleaning, and performance optimization.</p>
+                    </div>
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-temperature-low"></i>
+                        </div>
+                        <h3>Refrigerator & Deep Freeze</h3>
+                        <p>Complete refrigerator solutions including compressor repair, gas charging, thermostat replacement, and deep freeze maintenance.</p>
+                    </div>
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-tv"></i>
+                        </div>
+                        <h3>TV & Electronics</h3>
+                        <p>LED, LCD, Smart TV repair and installation. Wall mounting, home theater setup, and electronic device troubleshooting.</p>
+                    </div>
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-burn"></i>
+                        </div>
+                        <h3>Geyser & Oven Service</h3>
+                        <p>Water heater installation, repair, and maintenance. Microwave oven servicing and kitchen appliance solutions.</p>
+                    </div>
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-tshirt"></i>
+                        </div>
+                        <h3>Washing Machine</h3>
+                        <p>Complete washing machine services including motor repair, drum cleaning, installation, and maintenance for all brands.</p>
+                    </div>
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3>Emergency Repairs</h3>
+                        <p>24/7 emergency appliance repair service. Quick response time with skilled technicians and genuine spare parts.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section id="products" class="products">
+            <div class="container">
+                <div class="section-title fade-in">
+                    <h2>AS Appliances Store</h2>
+                    <p>Quality home appliances and electronics with warranty and installation service</p>
+                </div>
+                <div class="products-grid">
+                    <div class="product-card fade-in">
+                        <div class="product-image">
+                            <i class="fas fa-snowflake"></i>
+                        </div>
+                        <div class="product-info">
+                            <h3>Split & Window AC</h3>
+                            <div class="product-price">₹25,000 - ₹60,000</div>
+                            <p>Energy efficient air conditioners from top brands with installation and warranty.</p>
+                            <button class="btn btn-primary" onclick="openModal('orderModal', 'Air Conditioner')">Order Now</button>
+                        </div>
+                    </div>
+                    <div class="product-card fade-in">
+                        <div class="product-image">
+                            <i class="fas fa-temperature-low"></i>
+                        </div>
+                        <div class="product-info">
+                            <h3>Refrigerators</h3>
+                            <div class="product-price">₹15,000 - ₹80,000</div>
+                            <p>Single door, double door, and side-by-side refrigerators with latest technology.</p>
+                            <button class="btn btn-primary" onclick="openModal('orderModal', 'Refrigerator')">Order Now</button>
+                        </div>
+                    </div>
+                    <div class="product-card fade-in">
+                        <div class="product-image">
+                            <i class="fas fa-tv"></i>
+                        </div>
+                        <div class="product-info">
+                            <h3>Smart LED TVs</h3>
+                            <div class="product-price">₹12,000 - ₹1,50,000</div>
+                            <p>HD, Full HD, 4K Smart TVs with Android, built-in WiFi and streaming apps.</p>
+                            <button class="btn btn-primary" onclick="openModal('orderModal', 'Smart TV')">Order Now</button>
+                        </div>
+                    </div>
+                    <div class="product-card fade-in">
+                        <div class="product-image">
+                            <i class="fas fa-tshirt"></i>
+                        </div>
+                        <div class="product-info">
+                            <h3>Washing Machines</h3>
+                            <div class="product-price">₹18,000 - ₹65,000</div>
+                            <p>Semi-automatic and fully automatic washing machines with advanced features.</p>
+                            <button class="btn btn-primary" onclick="openModal('orderModal', 'Washing Machine')">Order Now</button>
+                        </div>
+                    </div>
+                    <div class="product-card fade-in">
+                        <div class="product-image">
+                            <i class="fas fa-burn"></i>
+                        </div>
+                        <div class="product-info">
+                            <h3>Water Heaters</h3>
+                            <div class="product-price">₹5,000 - ₹25,000</div>
+                            <p>Electric and gas geysers, instant water heaters with energy saving technology.</p>
+                            <button class="btn btn-primary" onclick="openModal('orderModal', 'Water Heater')">Order Now</button>
+                        </div>
+                    </div>
+                    <div class="product-card fade-in">
+                        <div class="product-image">
+                            <i class="fas fa-fan"></i>
+                        </div>
+                        <div class="product-info">
+                            <h3>Coolers & Fans</h3>
+                            <div class="product-price">₹3,000 - ₹20,000</div>
+                            <p>Desert coolers, personal coolers, ceiling fans and pedestal fans for home comfort.</p>
+                            <button class="btn btn-primary" onclick="openModal('orderModal', 'Cooler/Fan')">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="about-content fade-in">
+                    <div class="about-text">
+                        <h2>Why Choose AS Service?</h2>
+                        <p>Located at Newalal Chowk, Purnia, Bihar, AS Service has been serving the community with reliable home appliance solutions for years. Our commitment to excellence and customer satisfaction makes us the preferred choice for appliance services.</p>
+                        <p>With our skilled technicians and genuine spare parts, we ensure your appliances run efficiently and last longer. From emergency repairs to planned installations, we're here to help.</p>
+                        <div class="about-features">
+                            <div class="feature-item">
+                                <i class="fas fa-users"></i>
+                                <span>Expert Technicians</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-clock"></i>
+                                <span>24/7 Emergency</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Genuine Parts</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-award"></i>
+                                <span>Service Warranty</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-image">
+                        <div style="background: rgba(255,255,255,0.1); padding: 60px; border-radius: 20px; text-align: center;">
+                            <i class="fas fa-tools" style="font-size: 5rem; margin-bottom: 20px; color: #ffd700;"></i>
+                            <h3 style="font-size: 2rem; margin-bottom: 15px;">Professional Service</h3>
+                            <p style="font-size: 1.1rem; opacity: 0.9;">Trusted by thousands of satisfied customers across Purnia</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <div class="section-title fade-in">
+                    <h2>Get In Touch</h2>
+                    <p>Contact us for any appliance service or product inquiry</p>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-item fade-in">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Visit Our Shop</h3>
+                        <p>AS Service & AS Appliances<br>Newalal Chowk, Purnia<br>Bihar, India</p>
+                    </div>
+                    <div class="contact-item fade-in">
+                        <i class="fas fa-phone"></i>
+                        <h3>Call Us</h3>
+                        <p>Service: +91-9876543210<br>Sales: +91-8765432109<br>Emergency: +91-7654321098</p>
+                    </div>
+                    <div class="contact-item fade-in">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email Us</h3>
+                        <p>info@asservice.com<br>sales@asappliances.com<br>support@asservice.com</p>
+                    </div>
+                    <div class="contact-item fade-in">
+                        <i class="fas fa-clock"></i>
+                        <h3>Working Hours</h3>
+                        <p>Mon - Sat: 9:00 AM - 8:00 PM<br>Sunday: 10:00 AM - 6:00 PM<br>Emergency: 24/7</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>AS Service & Appliances</h3>
+                    <p>Your trusted partner for home appliance repair, installation, and sales in Purnia, Bihar. Quality service with skilled technicians.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul>
+                        <li>AC Repair & Installation</li>
+                        <li>Refrigerator Service</li>
+                        <li>TV & Electronics</li>
+                        <li>Washing Machine Repair</li>
+                        <li>Geyser & Oven Service</li>
+                        <li>Emergency Repairs</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Newalal Chowk, Purnia, Bihar</p>
+                    <p><i class="fas fa-phone"></i> +91-9876543210</p>
+                    <p><i class="fas fa-envelope"></i> info@asservice.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AS Service & Appliances. All rights reserved. | Designed for Firebase Hosting</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('bookingModal')">&times;</span>
+            <h2 style="text-align: center; margin-bottom: 30px; color: #333;">Book Service</h2>
+            <form id="bookingForm" onsubmit="submitBooking(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="customerName">Full Name *</label>
+                        <input type="text" id="customerName" name="customerName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="address">Complete Address *</label>
+                    <textarea id="address" name="address" rows="3" required placeholder="Enter your complete address for service visit"></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="serviceType">Service Type *</label>
+                        <select id="serviceType" name="serviceType" required>
+                            <option value="">Select Service</option>
+                            <option value="ac-repair">AC Repair</option>
+                            <option value="ac-installation">AC Installation</option>
+                            <option value="refrigerator-repair">Refrigerator Repair</option>
+                            <option value="tv-repair">TV Repair</option>
+                            <option value="washing-machine">Washing Machine</option>
+                            <option value="geyser-repair">Geyser Repair</option>
+                            <option value="cooler-service">Cooler Service</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="preferredDate">Preferred Date *</label>
+                        <input type="date" id="preferredDate" name="preferredDate" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="preferredTime">Preferred Time *</label>
+                        <select id="preferredTime" name="preferredTime" required>
+                            <option value="">Select Time</option>
+                            <option value="morning">Morning (9 AM - 12 PM)</option>
+                            <option value="afternoon">Afternoon (12 PM - 4 PM)</option>
+                            <option value="evening">Evening (4 PM - 8 PM)</option>
+                            <option value="emergency">Emergency (ASAP)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="priority">Service Priority</label>
+                        <select id="priority" name="priority">
+                            <option value="normal">Normal</option>
+                            <option value="urgent">Urgent</option>
+                            <option value="emergency">Emergency</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="problem">Problem Description</label>
+                    <textarea id="problem" name="problem" rows="3" placeholder="Describe the issue with your appliance (optional)"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 20px;">
+                    <i class="fas fa-calendar-check"></i> Book Service
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Order Modal -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('orderModal')">&times;</span>
+            <h2 style="text-align: center; margin-bottom: 30px; color: #333;">Order Product</h2>
+            <form id="orderForm" onsubmit="submitOrder(event)">
+                <div class="form-group">
+                    <label for="productName">Product *</label>
+                    <input type="text" id="productName" name="productName" required readonly>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="buyerName">Full Name *</label>
+                        <input type="text" id="buyerName" name="buyerName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="buyerPhone">Phone Number *</label>
+                        <input type="tel" id="buyerPhone" name="buyerPhone" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="buyerEmail">Email Address</label>
+                    <input type="email" id="buyerEmail" name="buyerEmail">
+                </div>
+                <div class="form-group">
+                    <label for="deliveryAddress">Delivery Address *</label>
+                    <textarea id="deliveryAddress" name="deliveryAddress" rows="3" required placeholder="Enter complete delivery address"></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="brand">Preferred Brand</label>
+                        <select id="brand" name="brand">
+                            <option value="">Any Brand</option>
+                            <option value="lg">LG</option>
+                            <option value="samsung">Samsung</option>
+                            <option value="whirlpool">Whirlpool</option>
+                            <option value="godrej">Godrej</option>
+                            <option value="haier">Haier</option>
+                            <option value="voltas">Voltas</option>
+                            <option value="panasonic">Panasonic</option>
+                            <option value="sony">Sony</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="budget">Budget Range</label>
+                        <select id="budget" name="budget">
+                            <option value="">Select Budget</option>
+                            <option value="under-10k">Under ₹10,000</option>
+                            <option value="10k-25k">₹10,000 - ₹25,000</option>
+                            <option value="25k-50k">₹25,000 - ₹50,000</option>
+                            <option value="50k-1l">₹50,000 - ₹1,00,000</option>
+                            <option value="above-1l">Above ₹1,00,000</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="requirements">Special Requirements</label>
+                    <textarea id="requirements" name="requirements" rows="3" placeholder="Any specific features, size, or requirements (optional)"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" name="installation" value="yes" style="margin-right: 10px;">
+                        Include Installation Service (+₹500-₹2000)
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 20px;">
+                    <i class="fas fa-shopping-cart"></i> Place Order
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content" style="text-align: center;">
+            <span class="close" onclick="closeModal('successModal')">&times;</span>
+            <div style="color: #28a745; font-size: 4rem; margin-bottom: 20px;">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2 style="color: #333; margin-bottom: 15px;">Success!</h2>
+            <p id="successMessage" style="color: #666; font-size: 1.1rem; margin-bottom: 30px;"></p>
+            <button class="btn btn-primary" onclick="closeModal('successModal')">Close</button>
+        </div>
+    </div>
+
+    <script>
+        // Set minimum date to today
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('preferredDate').setAttribute('min', today);
+            
+            // Initialize fade-in animations
+            observeElements();
+        });
+
+        // Mobile menu toggle
+        function toggleMenu() {
+            const navMenu = document.querySelector('.nav-menu');
+            navMenu.classList.toggle('active');
+        }
+
+        // Modal functions
+        function openModal(modalId, productName = '') {
+            document.getElementById(modalId).style.display = 'block';
+            if (productName && modalId === 'orderModal') {
+                document.getElementById('productName').value = productName;
+            }
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
+
+        // Form submissions
+        function submitBooking(event) {
+            event.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            
+            // Simulate form submission
+            console.log('Booking Data:', data);
+            
+            // Close booking modal and show success
+            closeModal('bookingModal');
+            document.getElementById('successMessage').textContent = 
+                `Your service booking has been submitted successfully! We'll contact you within 2 hours to confirm your appointment for ${data.serviceType}.`;
+            openModal('successModal');
+            
+            // Reset form
+            event.target.reset();
+        }
+
+        function submitOrder(event) {
+            event.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            
+            // Simulate form submission
+            console.log('Order Data:', data);
+            
+            // Close order modal and show success
+            closeModal('orderModal');
+            document.getElementById('successMessage').textContent = 
+                `Your order for ${data.productName} has been placed successfully! Our sales team will contact you within 4 hours with product options and pricing.`;
+            openModal('successModal');
+            
+            // Reset form
+            event.target.reset();
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href.startsWith('#') && href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        const headerHeight = document.querySelector('header').offsetHeight;
+                        const targetPosition = target.offsetTop - headerHeight;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Header scroll effect
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > 100) {
+                header.style.background = 'rgba(102, 126, 234, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+                header.style.backdropFilter = 'none';
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+
+        // Intersection Observer for fade-in animations
+        function observeElements() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Add floating action button for quick booking
+        const fab = document.createElement('div');
+        fab.innerHTML = '<i class="fas fa-phone"></i>';
+        fab.style.cssText = `
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        `;
+
+        fab.addEventListener('click', () => openModal('bookingModal'));
+        fab.addEventListener('mouseenter', () => {
+            fab.style.transform = 'scale(1.1)';
+            fab.style.boxShadow = '0 12px 35px rgba(0,0,0,0.4)';
+        });
+        fab.addEventListener('mouseleave', () => {
+            fab.style.transform = 'scale(1)';
+            fab.style.boxShadow = '0 8px 25px rgba(0,0,0,0.3)';
+        });
+
+        document.body.appendChild(fab);
+
+        // Add pulse animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0% { box-shadow: 0 8px 25px rgba(0,0,0,0.3), 0 0 0 0 rgba(255, 107, 107, 0.7); }
+                70% { box-shadow: 0 8px 25px rgba(0,0,0,0.3), 0 0 0 10px rgba(255, 107, 107, 0); }
+                100% { box-shadow: 0 8px 25px rgba(0,0,0,0.3), 0 0 0 0 rgba(255, 107, 107, 0); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Add WhatsApp integration
+        function openWhatsApp() {
+            const message = "Hello! I would like to inquire about your appliance services.";
+            const phoneNumber = "919876543210"; // Replace with actual WhatsApp number
+            const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+        }
+
+        // Add WhatsApp button to contact section
+        document.addEventListener('DOMContentLoaded', function() {
+            const whatsappBtn = document.createElement('div');
+            whatsappBtn.innerHTML = `
+                <button onclick="openWhatsApp()" class="btn btn-primary" style="background: #25D366; margin-top: 20px;">
+                    <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                </button>
+            `;
+            
+            // Add WhatsApp icon to Font Awesome
+            const link = document.createElement('link');
+            link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css';
+            link.rel = 'stylesheet';
+            document.head.appendChild(link);
+        });
+    </script>
+</body>
+</html>
