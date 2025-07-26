@@ -492,3 +492,32 @@ function initializeUIEnhancements() {
 
 // Call UI enhancements on load
 document.addEventListener('DOMContentLoaded', initializeUIEnhancements);
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const saleProductImages = document.querySelectorAll('[id^="saleProductImage"]');
+    
+    saleProductImages.forEach(saleProductImage => {
+        const saleImageContainer = saleProductImage.querySelector('.sale-image-container');
+        let isShowingPhoto = false;
+
+        function toggleImage() {
+            saleProductImage.classList.add('sale-shimmer');
+            
+            setTimeout(() => {
+                if (isShowingPhoto) {
+                    saleImageContainer.classList.remove('sale-show-photo');
+                } else {
+                    saleImageContainer.classList.add('sale-show-photo');
+                }
+                isShowingPhoto = !isShowingPhoto;
+            }, 200);
+
+            setTimeout(() => {
+                saleProductImage.classList.remove('sale-shimmer');
+            }, 1000);
+        }
+
+        setInterval(toggleImage, 3000);
+    });
+});
