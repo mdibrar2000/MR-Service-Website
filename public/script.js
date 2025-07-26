@@ -272,7 +272,7 @@ function simulateAPICall(callback) {
 
 // WhatsApp integration
 function openWhatsApp() {
-    const phoneNumber = "919876543210"; // Replace with actual WhatsApp business number
+    const phoneNumber = "916204816314";
     const message = "Hello! I'm interested in your appliance services. Please provide more information.";
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');
